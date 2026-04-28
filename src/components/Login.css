@@ -1,0 +1,49 @@
+.login-screen {
+  background: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: lowercase; /* strictly lowercase */
+  padding: 20px;
+}
+
+.massive-heading {
+  font-size: 6rem; /* huge and raw */
+  line-height: 0.8;
+  color: #f4b400; /* industrial yellow */
+  margin-bottom: 50px;
+}
+
+.massive-input {
+  display: block;
+  width: 100%;
+  padding: 30px;
+  margin-bottom: 20px;
+  background: #111;
+  border: 5px solid #333;
+  color: #fff;
+  font-size: 2.5rem;
+  outline: none;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 30px;
+  background: #f4b400;
+  color: #000;
+  border: none;
+  font-size: 3rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.exit-btn {
+  background: transparent;
+  color: #666;
+  border: none;
+  font-size: 1.5rem;
+  margin-top: 30px;
+  cursor: pointer;
+  text-decoration: underline;
+}
