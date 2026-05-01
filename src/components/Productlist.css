@@ -1,35 +1,246 @@
-/* Container & Grid */
-.autotrader-theme { padding: 20px; background: #f4f4f4; min-height: 100vh; }
-.at-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-  gap: 20px; 
+/* --- THE MASSIVE SEARCH BAR --- */
+.massive-search {
+  background-color: #000 !important; /* Deep black background */
+  color: #ff0000 !important;        /* Bright red input text */
+  
+  /* Size and Spacing */
+  width: 95%;                       /* Stretches across most of the screen */
+  max-width: 1000px;                /* Limits width on very large monitors */
+  padding: 25px;                    /* Thick padding for a chunky feel */
+  font-size: 36px !important;       /* Huge text for easy reading */
+  
+  /* Retro 3D Border */
+  border: 5px inset #808080 !important; 
+  margin: 20px 0;
+  
+  /* Font and Style */
+  font-family: "Courier New", Courier, monospace; /* Monospace for that terminal look */
+  font-weight: bold;
+  outline: none;                    /* Removes modern browser blue glow */
+}
+.qty-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
 }
 
-/* Card Styling */
-.at-card { 
-  background: white; 
-  border-radius: 8px; 
-  overflow: hidden; 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+.qty-controls button {
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #444;
+  border-bottom: 2px solid #444;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s;
 }
-.at-card:hover { transform: translateY(-5px); }
-.at-card-img img { width: 100%; height: 180px; object-fit: cover; }
-.at-card-content { padding: 15px; }
-.at-title { font-size: 16px; margin: 0; color: #333; }
-.at-price { font-size: 22px; font-weight: bold; color: #d32f2f; margin: 10px 0; }
-.at-location { font-size: 12px; color: #777; }
 
-/* Detail Page (VDP) */
-.vdp-container { padding: 40px; background: white; max-width: 1200px; margin: 0 auto; }
-.vdp-main { display: flex; gap: 40px; margin-top: 20px; }
-.vdp-image-section img { width: 100%; border-radius: 12px; max-width: 600px; }
-.vdp-price { font-size: 36px; font-weight: bold; color: #d32f2f; }
-.contact-btn { 
-  background: #ef6c00; color: white; border: none; 
-  padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; width: 100%;
+.qty-controls input {
+  width: 50px;
+  height: 40px;
+  background: #000;
+  color: #ffff00; /* Yellow numbers */
+  text-align: center;
+  font-size: 22px;
+  border: 2px inset #808080;
 }
-.vdp-footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #999; }
-.badge { background: #eee; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+
+/* --- BASKET HEADER --- */
+.basket-header {
+  background: #000066;
+  border: 3px double #ffffff;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-btn {
+  background: #00ff00; /* Bright Green */
+  color: #000;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 3px outset #fff;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background: #00cc00;
+}
+
+/* --- STOCK TAG --- */
+.stock-count {
+  color: #ff0000; /* Red Stock text */
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* Make the "searching for parts..." text even bigger and brighter red */
+.massive-search::placeholder {
+  color: #ff0000 !important;
+  font-size: 32px;
+  opacity: 1;                       /* No transparency */
+  font-style: italic;
+  text-shadow: 1px 1px #333;
+}
+
+/* Optional: Add a yellow glow when you click inside to search */
+.massive-search:focus {
+  border-color: #ffff00 !important;
+  box-shadow: 0 0 15px #ff0000;      /* Red outer glow on focus */
+}
+
+/* --- GLOBAL OVERRIDES --- */
+.binder-wrap {
+  background-color: #000033 !important; /* Force deep navy background */
+  color: #ffffff;
+  padding: 20px;
+  min-height: 100vh;
+  font-family: "Verdana", sans-serif;
+}
+
+/* --- HEADER & SEARCH --- */
+.massive-text {
+  color: #ff0000 !important; /* Bright Red for the main title */
+  font-size: 42px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #000;
+  margin-bottom: 20px;
+}
+
+.massive-search {
+  background-color: #000 !important;
+  color: #ff0000 !important; /* Red text when typing */
+  border: 3px inset #808080;
+  padding: 15px;
+  font-size: 24px; /* Larger search text */
+  width: 100%;
+  max-width: 600px;
+  outline: none;
+}
+
+.basket-header
+{
+  background: #000066;
+  border: 3px double #ffffff;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.massive-search::placeholder {
+  color: #ff0000 !important; /* Red placeholder */
+  font-size: 22px;
+  opacity: 0.8;
+}
+
+/* --- LEDGER CARDS (FRONT) --- */
+.ledger-page {
+  background-color: #000066 !important;
+  border: 2px outset #ffffff;
+  margin-bottom: 20px;
+}
+
+.item-title {
+  color: #ffff00 !important; /* Vimm Yellow for listing names */
+  font-size: 28px !important;
+  text-decoration: underline;
+}
+
+.car-title, .ref-data {
+  color: #ffffff !important; /* Pure white for compatibility info */
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+.price-massive {
+  color: #00ff00 !important; /* Neon Green for prices pops well */
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* --- LEDGER CARDS (BACK / DISCLOSURE) --- */
+.page-back {
+  background-color: #000044 !important;
+  color: #ffffff !important;
+}
+
+.tab-label, .turn-hint {
+  color: #cccccc !important; /* Light gray only for small hints */
+}
+
+.stock-massive {
+  color: #ffff00 !important; /* Yellow stock numbers */
+  font-size: 40px;
+}
+
+.location-tag {
+  color: #ff0000 !important; /* Red for the "Bay" location */
+  font-size: 24px !important;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+/* --- INTERACTION LINKS (Buttons) --- */
+.link-box {
+  background-color: #c0c0c0 !important; /* Windows 95 Silver */
+  color: #000000 !important; /* Black text on silver buttons */
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #444;
+  border-bottom: 2px solid #444;
+}
+
+.link-box:active {
+  border: 2px inset #444;
+}
+.vault-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 51, 0.9); /* Dark blue transparency */
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+}
+
+.payment-window {
+  background: #000;
+  border: 4px double #ff0000; /* Vimm's Lair Red */
+  width: 90%; max-width: 600px;
+  max-height: 80vh;
+  padding: 20px;
+  display: flex; flex-direction: column;
+}
+
+.manifest-scroll {
+  overflow-y: auto;
+  margin: 20px 0;
+  border-top: 1px solid #333;
+}
+
+.manifest-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px 80px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #222;
+}
+
+.mini-photo {
+  width: 70px; height: 50px;
+  object-fit: cover;
+  border: 1px solid #ff0000;
+}

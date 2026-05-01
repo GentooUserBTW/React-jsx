@@ -1,43 +1,59 @@
 #root {
-  max-width: 1280px;
+  --bg-dark: #000033;
+  --panel-blue: #000066;
+  --border-gray: #808080;   /* Classic gray borders */
+  --text-parchment: #cccccc;/* Off-white/gray text */
+  --link-yellow: #ffff00;   /* High-contrast links */
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-parchment);
+  font-family: "Verdana", "Geneva", sans-serif;
+  font-size: 14px;
+}
+
+.app-container {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: left;
+  border-left: 2px solid var(--border-gray);
+  border-right: 2px solid var(--border-gray);
+  min-height: 100vh;
+  box-shadow: 10px 0 15px rgba(0,0,0,0.5);
 }
 
-.logo {
-  width: 15px;
-  height: auto;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.content-area {
+  padding: 20px;
+  background-color: var(--panel-blue);
+  border: 2px inset #444; /* Creates that classic 90s depth */
+  margin: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style your buttons to look like classic Windows 95/98 buttons */
+button {
+  background-color: #c0c0c0;
+  color: #000;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #444;
+  border-bottom: 2px solid #444;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+button:active {
+  border-top: 2px solid #444;
+  border-left: 2px solid #444;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #a75f5f;
+.footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 11px;
+  color: #666;
+  border-top: 1px solid var(--border-gray);
 }

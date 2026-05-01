@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import './App.css';
 import login from './components/Login';
 import Productlist from './components/Productlist';
 
@@ -11,13 +12,19 @@ return (
   <div className="App">
   <Navbar onLoginClick={() => setShowLogin(true)} />
 
-    {showLogin ? (
+  <main className="content-area">
+  {showLogin ? (
   <login setShowLogin={setShowLogin} />
   ) : (
     <Productlist/>
   )}
+  </main>
+
+  <footer className="footer">
+    <p>Welcome to Vimms lair:</p>
+  </footer>
   </div>
-);
-}
+)
+};
 
 export default App;
