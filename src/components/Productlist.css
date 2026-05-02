@@ -173,6 +173,12 @@
   color: #ffffff !important;
 }
 
+.welcome-text {
+  font-size: 20px;
+  color: white;
+  margin: 10px 0;
+  padding: 10px;
+}
 .tab-label, .turn-hint {
   color: #cccccc !important; /* Light gray only for small hints */
 }

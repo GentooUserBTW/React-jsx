@@ -23,7 +23,8 @@ const ProductList = () => {
   const [quantities, setQuantities] = useState({}); // Tracking { id: number }
   const [search, setSearch] = useState("");
   const [showPayment, setShowPayment] = useState(false);
-  const [flipped, setFlipped] = useState({}); // Tracking { id: boolean }
+  const [flipped, setFlipped] = useState({});
+  const [checkoutStep, setCheckoutStep] = useState('basket');
 
   const clearBasket = () => {
   if (window.confirm("Clear all items from the BASKET?")) {
@@ -36,6 +37,8 @@ const ProductList = () => {
     item.part.toLowerCase().includes(search.toLowerCase()) || 
     item.car.toLowerCase().includes(search.toLowerCase())
   );
+
+  const username = localStorage.getItem("user");
 
   const updatebasketQty = (itemId, delta) => {
     setBasket(prevBasket => {
@@ -133,6 +136,9 @@ const ProductList = () => {
 
 return (
     <div className="binder-wrap">
+      <div className="welcome-text">
+        Welcome, {username || "Guest"}
+      </div>
       <div className="basket-header">
         <span className="yellow-text">BASKET: {basket.length} ITEMS</span>
         <button className="checkout-btn" onClick={() => setShowPayment(true)}>
@@ -159,7 +165,7 @@ return (
             {/* FRONT SIDE */}
             <div className="page-content">
               <img 
-                src={`https://loremflickr.com/600/400/engine,parts,supercars/all?lock=${item.id}`}
+                src={`https://loremflickr.com/600/400/dodge,vintage-cars/all?lock=${item.id}`}
                 alt="part-scan" 
                 className="raw-photo"
                 loading="lazy"
@@ -189,7 +195,7 @@ return (
               </div>
             </div>
             
-            {/* BACK SIDE */}
+           
             <div className="page-back">
               <p className="tab-label">CURRENT VAULT STATUS</p>
               <div className="stock-massive">{item.stock}</div>
@@ -207,55 +213,49 @@ return (
     
 
     {showPayment && (
+
     <div className="vault-overlay">
     <div className="payment-window large">
-      <div className="modal-header">
-        <h2 className="yellow-text">PARTS BASKET: {basket.length} ITEMS</h2>
-        <div className="header-actions">
-          <button className="clear-btn" onClick={clearBasket}>[ CLEAR ]</button>
-          <button className="close-x" onClick={() => setShowPayment(false)}>X</button>
-        </div>
+    <div className="modal-header">
+    <h2 className="yellow-text">ORDER LISTS: {basket.length} ITEMS</h2>
+    <div className="header-actions">
+      <button className="clear-btn" onClick={clearBasket}>[ CLEAR ]</button>
+      <button className="close-x" onClick={() => setShowPayment(false)}>X</button>
       </div>
-
-
-      <div className="manifest-scroll">
+      </div>
+      <div className="order-scroll">
         {basket.length > 0 ? (
-          basket.map((item, index) => (
-            <div key={`${item.id}-${index}`} className="manifest-item">
-              <span className="mini-id">#{item.id}</span>
-              <img src={item.img} alt="thumb" className="mini-photo" />
-              
-              <div className="item-details">
-                <span className="part-name">{item.part}</span>
-                <span className="part-price">${item.price}</span>
-              </div>
-
-              <div className="qty-controls">
-                <button onClick={() => updateBasketQty(item.id, -1)}>-</button>
-                <span className="qty-val">{item.orderQty}</span>
-                <button onClick={() => updateBasketQty(item.id, 1)}>+</button>
-              </div>
-
-              <div className="item-total">
-                ${(item.price * item.orderQty).toFixed(2)}
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="empty-msg">ITEMS EMPTY - NO PARTS SELECTED</p>
-        )}
-      </div> 
-
-    
-      <div className="modal-footer">
-        <div className="grand-total">
-          TOTAL: ${basket.reduce((sum, item) => sum + (item.price * item.orderQty), 0).toFixed(2)}    
-        </div>
-        <button className="checkout-btn final">PROCEED TO SHIPPING</button>
-      </div>
-        </div>
+        basket.map((item, index) => (
+        <div key={`${item.id}-${index}`} className="order-items">
+          <span className="mini-id">#{item.id}</span>
+          <img
+            src={`https://loremflickr.com/200/200/cars,vintage-cars?lock=${item.id}`}
+            alt="part-thumbnail"
+            className="mini-photo"
+            onError={(e) => {e.target.src = 'https://via.placeholder.com/200?text=Part+Scan';}}
+          />
+          <div className="item-details">
+            <span className="part-name">{item.part}</span>
+            <span className="part-price">${item.price}</span>
           </div>
+          <div className="qty-controls">
+            <button onClick={() => updateBasketQty(item.id, -1)}>-</button>
+          <span className="qty-val">{item.orderQty}</span>
+          <button onClick={() => updateBasketQty(item.id, 1)}>+</button>
+          </div>
+          <div className="item-total">
+          ${(item.price * item.orderQty).toFixed(2)}
+          </div>
+        </div>
+        ))
+      ) : (
+        <p className="empty-msg">"STOCK EMPTY - NO PARTS SELECTED"</p>
+      )}
+    </div>
+    </div>
+    </div>
     )}
   </div>
-)}
+);
+}; 
 export default ProductList;

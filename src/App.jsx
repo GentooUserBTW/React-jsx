@@ -1,30 +1,46 @@
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import './App.css';
-import login from './components/Login';
-import Productlist from './components/Productlist';
+import React from "react";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import ProductList from "./components/Productlist";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
+  return (
+    <BrowserRouter>
 
-return (
-  <div className="App">
-  <Navbar onLoginClick={() => setShowLogin(true)} />
+      <div className="App">
+        <Navbar />
 
-  <main className="content-area">
-  {showLogin ? (
-  <login setShowLogin={setShowLogin} />
-  ) : (
-    <Productlist/>
-  )}
-  </main>
+        {/* ROUTES */}
+        <main className="content-area">
 
-  <footer className="footer">
-    <p>Welcome to Vimms lair:</p>
-  </footer>
-  </div>
-)
-};
+          <Routes>
+
+            {/* AUTOPARTS MAIN PAGE */}
+            <Route path="/" element={<ProductList />} />
+
+            {/* LOGIN PAGE */}
+            <Route path="/login" element={<Login />} />
+
+            {/* REGISTER PAGE */}
+            <Route path="/register" element={<Register />} />
+
+          </Routes>
+
+        </main>
+
+        {/* FOOTER */}
+        <footer className="footer">
+          <p>Welcome to Autoparts.co</p>
+        </footer>
+
+      </div>
+
+    </BrowserRouter>
+  );
+}
 
 export default App;
